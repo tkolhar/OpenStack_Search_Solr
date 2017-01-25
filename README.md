@@ -49,55 +49,91 @@ Also, we assign static ip address to the machine
 for my system I setup :
 
 vim /etc/sysconfig/network-scripts/ifcfg-eno-16777736
+
 TYPE=Ethernet
+
 BOOTPROTO=static
+
 DEFROUTE=yes
+
 IPV4_FAILURE_FATAL=no
+
 IPV6INIT=yes
+
 IPV6_AUTOCONF=yes
+
 IPV6_DEFROUTE=yes
+
 IPV6_FAILURE_FATAL=no
+
 NAME=eno16777736
+
 UUID=4711a184-5a95-4861-b3e1-5626bb3f8234
+
 DEVICE=eno16777736
+
 ONBOOT=yes
+
 PEERDNS=yes
+
 PEERROUTES=yes
+
 IPV6_PEERDNS=yes
+
 IPV6_PEERROUTES=yes
+
 IPADDR=192.168.0.28
+
 NETMASK=255.255.255.0
 
 $service network restart
+
 $chkconfig network on
+
 $service NetworkManager stop
+
 $chkconfig NetworkManager off
 
 	OPENSTACK INSTALLATION AND SETUP:
 
 	NETWORK –
 o	$ sudo systemctl disable firewalld
+
 o	$ sudo systemctl stop firewalld
+
 o	$ sudo systemctl disable NetworkManager
+
 o	$ sudo systemctl stop NetworkManager
+
 o	$ sudo systemctl enable network
+
 o	$ sudo systemctl start network
 
 	INSTALLATION:
 •	sudo yum install -y centos-release-openstack-newton
+
 •	sudo yum update -y
+
 •	sudo yum install -y openstack-packstack
+
 •	sudo packstack –allinone
 
 	Once, the setup is complete, a file is created :
+
 $ cat keystonerc_admin 
+
 unset OS_SERVICE_TOKEN
+
     export OS_USERNAME=admin
+    
     export OS_PASSWORD=ea12f4366a2a4253
+    
     export OS_AUTH_URL=http://192.168.0.28:5000/v2.0
+    
     export PS1='[\u@\h \W(keystone_admin)]\$ '
     
 export OS_TENANT_NAME=admin
+
 export OS_REGION_NAME=RegionOne
 
 These are the environment variables which we use in our code
@@ -107,29 +143,42 @@ The dashboard in my case will be accessed here
 http://192.168.0.28/dashboard.
 
 	SOLR INSTALLATION STEPS:
+
 •	CHECK JAVA INSTALLED :
+
 •	java -version
+
 •	java version "1.8.0_60"
+
 •	Java(TM) SE Runtime Environment (build 1.8.0_60-b27)
+
 •	Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
 
 
 	Solr is available from the Solr website at http://lucene.apache.org/solr/.
 http://www.apache.org/dyn/closer.lua/lucene/solr/6.3.0
+
 •	EXTRACT THE TAR FILE
 cd ~/
+
 tar zxf solr-x.y.z.tgz
 
 •	START SOLR
+
 bin/solr start
+
 IF WINDOWS then
+
 bin\solr.cmd start
 
 •	TO CHANGE THE PORT ON WHICH IT IS RUNNING
+
 bin/solr start -e techproducts -p 8984
 
 •	STOP SOLR
+
 bin/solr stop -e techproducts -p 8983
+
 bin/solr stop 
 
 •	THIS IS HOW SOLR INDEXES THE DOCUMENTS
@@ -173,19 +222,27 @@ In Order to Obtain Result for the indexed file One can use Curl and get data in 
 Export Environment Variables for Openstack swift   
 
 $export OS_USERNAME=admin
+
 $export OS_PASSWORD=ea12f4366a2a4253
+
  $export OS_AUTH_URL=http://192.168.0.28:5000/v2.0
+ 
  $export OS_TENANT_NAME=admin
+ 
  $export OS_REGION_NAME=RegionOne
 
 Run the Solr on 8983:
+
 $./solr start -e techproducts
 
 Install python-docx to extract *.docx content or Word document content
 
 $tar xvzf python-docx-{version}.tar.gz
+
 $cd python-docx-{version}
+
 $python setup.py install
+
 $pip install python-docx
 
 	https://python-docx.readthedocs.io/en/latest/user/install.html
