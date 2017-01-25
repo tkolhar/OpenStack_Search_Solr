@@ -48,81 +48,81 @@ is adopted by our Virtual machine network
 Also, we assign static ip address to the machine
 for my system I setup :
 
-vim /etc/sysconfig/network-scripts/ifcfg-eno-16777736
+    vim /etc/sysconfig/network-scripts/ifcfg-eno-16777736
 
-TYPE=Ethernet
+    TYPE=Ethernet
 
-BOOTPROTO=static
+    BOOTPROTO=static
 
-DEFROUTE=yes
+    DEFROUTE=yes
 
-IPV4_FAILURE_FATAL=no
+    IPV4_FAILURE_FATAL=no
 
-IPV6INIT=yes
+    IPV6INIT=yes
 
-IPV6_AUTOCONF=yes
+    IPV6_AUTOCONF=yes
 
-IPV6_DEFROUTE=yes
+    IPV6_DEFROUTE=yes
 
-IPV6_FAILURE_FATAL=no
+    IPV6_FAILURE_FATAL=no
 
-NAME=eno16777736
+    NAME=eno16777736
 
-UUID=4711a184-5a95-4861-b3e1-5626bb3f8234
+    UUID=4711a184-5a95-4861-b3e1-5626bb3f8234
 
-DEVICE=eno16777736
+    DEVICE=eno16777736
 
-ONBOOT=yes
+    ONBOOT=yes
 
-PEERDNS=yes
+    PEERDNS=yes
 
-PEERROUTES=yes
+    PEERROUTES=yes
 
-IPV6_PEERDNS=yes
+    IPV6_PEERDNS=yes
 
-IPV6_PEERROUTES=yes
+    IPV6_PEERROUTES=yes
 
-IPADDR=192.168.0.28
+    IPADDR=192.168.0.28
 
-NETMASK=255.255.255.0
+    NETMASK=255.255.255.0
 
-$service network restart
+    $service network restart
 
-$chkconfig network on
+    $chkconfig network on
 
-$service NetworkManager stop
+    $service NetworkManager stop
 
-$chkconfig NetworkManager off
+    $chkconfig NetworkManager off
 
-	OPENSTACK INSTALLATION AND SETUP:
+    	OPENSTACK INSTALLATION AND SETUP:
 
-	NETWORK –
-o	$ sudo systemctl disable firewalld
+    	NETWORK –
+    o	$ sudo systemctl disable firewalld
 
-o	$ sudo systemctl stop firewalld
+    o	$ sudo systemctl stop firewalld
 
-o	$ sudo systemctl disable NetworkManager
+    o	$ sudo systemctl disable NetworkManager
 
-o	$ sudo systemctl stop NetworkManager
+    o	$ sudo systemctl stop NetworkManager
 
-o	$ sudo systemctl enable network
+    o	$ sudo systemctl enable network
 
-o	$ sudo systemctl start network
+    o	$ sudo systemctl start network
 
-	INSTALLATION:
-•	sudo yum install -y centos-release-openstack-newton
+    	INSTALLATION:
+    •	sudo yum install -y centos-release-openstack-newton
 
-•	sudo yum update -y
+    •	sudo yum update -y
 
-•	sudo yum install -y openstack-packstack
+    •	sudo yum install -y openstack-packstack
 
-•	sudo packstack –allinone
+    •	sudo packstack –allinone
 
-	Once, the setup is complete, a file is created :
+    	Once, the setup is complete, a file is created :
 
-$ cat keystonerc_admin 
+    $ cat keystonerc_admin 
 
-unset OS_SERVICE_TOKEN
+    unset OS_SERVICE_TOKEN
 
     export OS_USERNAME=admin
     
@@ -132,9 +132,9 @@ unset OS_SERVICE_TOKEN
     
     export PS1='[\u@\h \W(keystone_admin)]\$ '
     
-export OS_TENANT_NAME=admin
+    export OS_TENANT_NAME=admin
 
-export OS_REGION_NAME=RegionOne
+    export OS_REGION_NAME=RegionOne
 
 These are the environment variables which we use in our code
 
@@ -165,47 +165,47 @@ tar zxf solr-x.y.z.tgz
 
 •	START SOLR
 
-bin/solr start
+    bin/solr start
 
 IF WINDOWS then
 
-bin\solr.cmd start
+    bin\solr.cmd start
 
 •	TO CHANGE THE PORT ON WHICH IT IS RUNNING
 
-bin/solr start -e techproducts -p 8984
+    bin/solr start -e techproducts -p 8984
 
 •	STOP SOLR
 
-bin/solr stop -e techproducts -p 8983
+    bin/solr stop -e techproducts -p 8983
 
-bin/solr stop 
+     bin/solr stop 
 
 •	THIS IS HOW SOLR INDEXES THE DOCUMENTS
 
-[tazimk@localhost exampledocs]$/opt/solr/bin/post -c techproducts   /opt/solr/example/exampledocs/Test.pdf -params literal.id=3
-java -classpath /opt/solr/dist/solr-core-5.4.0.jar -Dauto=yes -Dparams=literal.id=3 -Dc=techproducts -Ddata=files org.apache.solr.util.SimplePostTool /opt/solr/example/exampledocs/Test.pdf
+    [tazimk@localhost exampledocs]$/opt/solr/bin/post -c techproducts   /opt/solr/example/exampledocs/Test.pdf -params literal.id=3
+    java -classpath /opt/solr/dist/solr-core-5.4.0.jar -Dauto=yes -Dparams=literal.id=3 -Dc=techproducts -Ddata=files org.apache.solr.util.SimplePostTool /opt/solr/example/exampledocs/Test.pdf
 
-SimplePostTool version 5.0.0
+    SimplePostTool version 5.0.0
 
-Posting files to [base] url http://localhost:8983/solr/techproducts/update?literal.id=3...
+    Posting files to [base] url http://localhost:8983/solr/techproducts/update?literal.id=3...
 
-Entering auto mode. File endings considered are xml,json,csv,pdf,doc,docx,ppt,pptx,xls,xlsx,odt,odp,ods,ott,otp,ots,rtf,htm,html,txt,log
+     Entering auto mode. File endings considered are xml,json,csv,pdf,doc,docx,ppt,pptx,xls,xlsx,odt,odp,ods,ott,otp,ots,rtf,htm,html,txt,log
 
-POSTing file Test.pdf (application/pdf) to [base]/extract
+    POSTing file Test.pdf (application/pdf) to [base]/extract
 
-1 files indexed.
+    1 files indexed.
 
-COMMITting Solr index changes to http://localhost:8983/solr/techproducts/update?literal.id=3...
+    COMMITting Solr index changes to http://localhost:8983/solr/techproducts/update?literal.id=3...
 
-Time spent: 0:00:02.762
+    Time spent: 0:00:02.762
 
 	SEARCHING THE FILE IN SOLR WITH ITS CONTENT
 
 In Order to Obtain Result for the indexed file One can use Curl and get data in JSON format
 
-[tazimk@localhost exampledocs]$ curl -XGET "http://localhost:8983/solr/techproducts/select?q=Test.pdf&wt=json"
-{"responseHeader":{"status":0,"QTime":19,"params":{"q":"Test.pdf","wt":"json"}},"response":{"numFound":1,"start":0,"docs":[{"id":"3","resourcename":"/opt/solr/example/exampledocs/Test.pdf","content_type":["application/pdf"],"content":[" \n \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n \n    \n Hello World \n \n   \n  \n \n  "],"_version_":1551305347674669056}]}}
+    [tazimk@localhost exampledocs]$ curl -XGET "http://localhost:8983/solr/techproducts/select?q=Test.pdf&wt=json"
+    {"responseHeader":{"status":0,"QTime":19,"params":{"q":"Test.pdf","wt":"json"}},"response":{"numFound":1,"start":0,"docs":[{"id":"3","resourcename":"/opt/solr/example/exampledocs/Test.pdf","content_type":["application/pdf"],"content":[" \n \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n \n    \n Hello World \n \n   \n  \n \n  "],"_version_":1551305347674669056}]}}
 
 
         
@@ -221,29 +221,29 @@ In Order to Obtain Result for the indexed file One can use Curl and get data in 
 	Step to run the Application
 Export Environment Variables for Openstack swift   
 
-$export OS_USERNAME=admin
+    $export OS_USERNAME=admin
 
-$export OS_PASSWORD=ea12f4366a2a4253
+    $export OS_PASSWORD=ea12f4366a2a4253
 
- $export OS_AUTH_URL=http://192.168.0.28:5000/v2.0
+    $export OS_AUTH_URL=http://192.168.0.28:5000/v2.0
  
- $export OS_TENANT_NAME=admin
+    $export OS_TENANT_NAME=admin
  
- $export OS_REGION_NAME=RegionOne
+    $export OS_REGION_NAME=RegionOne
 
 Run the Solr on 8983:
 
-$./solr start -e techproducts
+    $./solr start -e techproducts
 
 Install python-docx to extract *.docx content or Word document content
 
-$tar xvzf python-docx-{version}.tar.gz
+    $tar xvzf python-docx-{version}.tar.gz
 
-$cd python-docx-{version}
+    $cd python-docx-{version}
 
-$python setup.py install
+    $python setup.py install
 
-$pip install python-docx
+    $pip install python-docx
 
 	https://python-docx.readthedocs.io/en/latest/user/install.html
 
@@ -253,11 +253,11 @@ Download it from here:
 
 Install slate to extract pdf files data:
 
-$unzip slate-master.zip
+    $unzip slate-master.zip
 
 There you will locate setup.py file
 
-$python setup.py install
+     $python setup.py install
 
 Download it from here:
 	https://github.com/timClicks/slate
