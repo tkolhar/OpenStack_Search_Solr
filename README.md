@@ -31,6 +31,7 @@ This plugin allows us to extract the data without the overhead of downloading th
 Install Vmware Workstation Player:
 
 http://www.vmware.com/products/player/playerpro-evaluation.html
+
 Create Virtual Machine:
 
 Provide Centos ISO while creating the Virtual machine.
