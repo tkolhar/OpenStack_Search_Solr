@@ -1,5 +1,5 @@
 # OpenStack_Search_Solr
-openstack search solr
+
                                                                                             
 Data is a valuable resource. Unstructured data has been growing
 enormously.
