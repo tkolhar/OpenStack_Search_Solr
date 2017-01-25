@@ -4,14 +4,11 @@
 Data is a valuable resource. Unstructured data has been growing
 enormously.
 
-Although we have facilities to handle and store the 
-data using swift, amazon S3.
+Although we have facilities to handle and store the data using swift, amazon S3.
 
-The basic implementation of Search
-is missing. 
+The basic implementation of Search is missing. 
 
-This really blocks other peripheral usecases such as
-content search, de-duplication. 
+This really blocks other peripheral usecases such as content search, de-duplication. 
 
 At a stage where we are dealing with minimizing our storage cost and improve efficiency, these
 functionalities even though basic provide a great contribution to existing feature.
